@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DesignHub</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Tahoma,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+button,input,select{
+    font-family:inherit;
+}
+
+/* ================= LOGIN ================= */
+
+#loginPage,
+#adminLoginPage{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:linear-gradient(135deg,#111827,#2563eb);
+}
+
+.login-box{
+    width:100%;
+    max-width:420px;
+    background:white;
+    padding:30px;
+    border-radius:22px;
+    box-shadow:0 15px 40px #0005;
+}
+
+.logo{
+    text-align:center;
+    font-size:36px;
+    font-weight:bold;
+    color:#2563eb;
+    margin-bottom:8px;
+}
+
+.login-subtitle{
+    text-align:center;
+    color:#6b7280;
+    margin-bottom:25px;
+}
+
+input,
+select,
+button{
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    border-radius:10px;
+    font-size:16px;
+}
+
+input,
+select{
+    border:1px solid #d1d5db;
+    background:white;
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:#2563eb;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    background:#2563eb;
+    color:white;
+    font-weight:bold;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.login-error{
+    color:#dc2626;
+    text-align:center;
+    margin-top:10px;
+}
+
+.admin-login-btn{
+    background:#111827;
+}
+
+.back-btn{
+    background:#6b7280;
+}
+
+/* ================= SITE ================= */
+
+#site{
+    display:none;
+}
+
+header{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:28px 15px;
+}
+
+header h1{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+header p{
+    color:#d1d5db;
+}
+
+/* ================= NAV ================= */
+
+nav{
+    background:white;
+    padding:12px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    box-shadow:0 2px 12px #0001;
+}
+
+nav button{
+    width:auto;
+    padding:10px 16px;
+    margin:0;
+}
+
+.logout{
+    background:#dc2626;
+}
+
+.share-site{
+    background:#059669;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:94%;
+    max-width:1200px;
+    margin:25px auto;
+}
+
+/* ================= ADMIN ================= */
+
+#adminPanel{
+    display:none;
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    margin-bottom:25px;
+    box-shadow:0 4px 15px #0001;
+}
+
+#adminPanel h2{
+    color:#2563eb;
+    margin-bottom:15px;
+}
+
+.admin-note{
+    background:#eff6ff;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+/* ================= SEARCH ================= */
+
+.search{
+    margin-bottom:20px;
+}
+
+/* ================= DESIGNS ================= */
+
+.designs{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:17px;
+    overflow:hidden;
+    box-shadow:0 4px 18px #0002;
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+.card-content{
+    padding:16px;
+}
+
+.card h3{
+    margin-bottom:8px;
+}
+
+.category{
+    color:#2563eb;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+/* ================= CARD BUTTONS ================= */
+
+.card-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+.card-buttons button{
+    margin:0;
+}
+
+.like-btn{
+    background:#ef4444;
+}
+
+.share-btn{
+    background:#059669;
+}
+
+.view-btn{
+    background:#7c3aed;
+}
+
+.delete-btn{
+    background:#dc2626;
+    grid-column:1 / -1;
+}
+
+.likes{
+    text-align:center;
+    margin:10px 0;
+    font-weight:bold;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    margin-top:40px;
+    background:#111827;
+    color:white;
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+}
+
+.contact h2{
+    margin-bottom:15px;
+}
+
+.phone{
+    display:block;
+    color:white;
+    text-decoration:none;
+    margin:10px;
+    font-size:20px;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    text-align:center;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+}
+
+/* ================= USER INFO ================= */
+
+.user-info{
+    width:94%;
+    max-width:1200px;
+    margin:20px auto 0;
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 3px 12px #0001;
+}
+
+.admin-badge{
+    color:#b45309;
+    font-weight:bold;
+}
+
+.visitor-badge{
+    color:#2563eb;
+    font-weight:bold;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:27px;
+    }
+
+    nav button{
+        width:100%;
+    }
+
+    .designs{
+        grid-template-columns:1fr;
+    }
+
+    .login-box{
+        padding:25px 20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ==================================================
+     LOGIN PAGE
+================================================== -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <div class="logo">
+            🎨 DesignHub
+        </div>
+
+        <div class="login-subtitle">
+            منصة التصاميم
+        </div>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="اكتب أي اسم مستخدم"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="اكتب أي كلمة مرور"
+        >
+
+        <button onclick="login()">
+            🚪 دخول
+        </button>
+
+        <button
+            class="admin-login-btn"
+            onclick="showAdminLogin()">
+            👑 دخول صاحب الموقع
+        </button>
+
+        <div
+            class="login-error"
+            id="loginError">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     ADMIN LOGIN
+================================================== -->
+
+<div
+    id="adminLoginPage"
+    style="display:none;">
+
+    <div class="login-box">
+
+        <div class="logo">
+            👑 DesignHub
+        </div>
+
+        <div class="login-subtitle">
+            دخول صاحب الموقع
+        </div>
+
+        <input
+            type="text"
+            id="adminUsername"
+            placeholder="اسم المستخدم"
+        >
+
+        <input
+            type="password"
+            id="adminPassword"
+            placeholder="كلمة المرور"
+        >
+
+        <button onclick="adminLogin()">
+            👑 دخول لوحة التحكم
+        </button>
+
+        <button
+            class="back-btn"
+            onclick="backToLogin()">
+            ↩️ رجوع
+        </button>
+
+        <div
+            class="login-error"
+            id="adminError">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     MAIN SITE
+================================================== -->
+
+<div id="site">
+
+<header>
+
+    <h1>🎨 DesignHub</h1>
+
+    <p>
+        كل أنواع التصاميم في مكان واحد
+    </p>
+
+</header>
+
+
+<!-- USER INFO -->
+
+<div class="user-info">
+
+    <span id="userWelcome"></span>
+
+</div>
+
+
+<!-- ==================================================
+     NAVIGATION
+================================================== -->
+
+<nav>
+
+    <button onclick="showAll()">
+        🏠 الكل
+    </button>
+
+    <button onclick="filterDesigns('لوجوهات')">
+        🏷️ لوجوهات
+    </button>
+
+    <button onclick="filterDesigns('سوشيال ميديا')">
+        📱 سوشيال
+    </button>
+
+    <button onclick="filterDesigns('إعلانات')">
+        📢 إعلانات
+    </button>
+
+    <button onclick="filterDesigns('ألعاب')">
+        🎮 ألعاب
+    </button>
+
+    <button onclick="filterDesigns('تعليم')">
+        📚 تعليم
+    </button>
+
+    <button onclick="filterDesigns('مواقع')">
+        🌐 مواقع
+    </button>
+
+    <button onclick="filterDesigns('أخرى')">
+        ✨ أخرى
+    </button>
+
+    <button
+        class="share-site"
+        onclick="shareSite()">
+        📤 مشاركة الموقع
+    </button>
+
+    <button
+        class="logout"
+        onclick="logout()">
+        🚪 خروج
+    </button>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- ==================================================
+     ADMIN PANEL
+================================================== -->
+
+<div id="adminPanel">
+
+    <h2>
+        👑 لوحة صاحب الموقع
+    </h2>
+
+    <div class="admin-note">
+        أنت صاحب الموقع ويمكنك إضافة وحذف التصاميم.
+        الزوار لا يستطيعون إضافة أو حذف أي تصميم.
+    </div>
+
+    <input
+        type="text"
+        id="designName"
+        placeholder="اسم التصميم"
+    >
+
+    <select id="designCategory">
+
+        <option value="لوجوهات">
+            🏷️ لوجوهات
+        </option>
+
+        <option value="سوشيال ميديا">
+            📱 سوشيال ميديا
+        </option>
+
+        <option value="إعلانات">
+            📢 إعلانات
+        </option>
+
+        <option value="ألعاب">
+            🎮 ألعاب
+        </option>
+
+        <option value="تعليم">
+            📚 تعليم
+        </option>
+
+        <option value="مواقع">
+            🌐 مواقع
+        </option>
+
+        <option value="أخرى">
+            ✨ أخرى
+        </option>
+
+    </select>
+
+    <input
+        type="text"
+        id="designImage"
+        placeholder="ضع رابط صورة التصميم هنا"
+    >
+
+    <button onclick="addDesign()">
+        ➕ إضافة تصميم
+    </button>
+
+</div>
+
+
+<!-- ==================================================
+     SEARCH
+================================================== -->
+
+<input
+    class="search"
+    id="search"
+    type="text"
+    placeholder="🔎 ابحث عن تصميم..."
+    oninput="searchDesigns()"
+>
+
+
+<!-- ==================================================
+     DESIGNS
+================================================== -->
+
+<div
+    class="designs"
+    id="designs">
+</div>
+
+
+<!-- ==================================================
+     CONTACT
+================================================== -->
+
+<div class="contact">
+
+    <h2>
+        📞 تواصل معنا
+    </h2>
+
+    <a
+        class="phone"
+        href="tel:01225320285">
+        📱 01225320285
+    </a>
+
+    <a
+        class="phone"
+        href="tel:01225320419">
+        📱 01225320419
+    </a>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ==================================================
+   CURRENT USER
+================================================== */
+
+let currentUser = null;
+
+
+/* ==================================================
+   ADMIN ACCOUNT
+================================================== */
+
+const adminAccount = {
+
+    username: "admin",
+
+    password: "admin123",
+
+    role: "admin"
+
+};
+
+
+/* ==================================================
+   DESIGNS
+================================================== */
+
+let defaultDesigns = [
+
+    {
+        id: 1,
+        name:"شعار احترافي",
+        category:"لوجوهات",
+        image:"https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=900&q=80",
+        likes:0
+    },
+
+    {
+        id: 2,
+        name:"تصميم سوشيال ميديا",
+        category:"سوشيال ميديا",
+        image:"https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=900&q=80",
+        likes:0
+    },
+
+    {
+        id: 3,
+        name:"تصميم إعلان",
+        category:"إعلانات",
+        image:"https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=900&q=80",
+        likes:0
+    },
+
+    {
+        id: 4,
+        name:"تصميم ألعاب",
+        category:"ألعاب",
+        image:"https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80",
+        likes:0
+    },
+
+    {
+        id: 5,
+        name:"تصميم تعليمي",
+        category:"تعليم",
+        image:"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
+        likes:0
+    },
+
+    {
+        id: 6,
+        name:"تصميم موقع",
+        category:"مواقع",
+        image:"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=900&q=80",
+        likes:0
+    }
+
+];
+
+
+/* ==================================================
+   LOAD DESIGNS
+================================================== */
+
+let savedDesigns =
+    localStorage.getItem("designHubDesigns");
+
+let designs =
+    savedDesigns
+    ? JSON.parse(savedDesigns)
+    : defaultDesigns;
+
+
+/* ==================================================
+   SAVE DESIGNS
+================================================== */
+
+function saveDesigns(){
+
+    localStorage.setItem(
+        "designHubDesigns",
+        JSON.stringify(designs)
+    );
+
+}
+
+
+/* ==================================================
+   VISITOR LOGIN
+================================================== */
+
+function login(){
+
+    const username =
+        document
+        .getElementById("username")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("password")
+        .value
+        .trim();
+
+    const error =
+        document.getElementById("loginError");
+
+
+    /*
+       أي اسم مستخدم وأي كلمة مرور
+       مسموح لهم بالدخول كزائر.
+    */
+
+    if(!username || !password){
+
+        error.textContent =
+            "اكتب اسم المستخدم وكلمة المرور";
+
+        return;
+
+    }
+
+
+    currentUser = {
+
+        username: username,
+
+        role: "visitor"
+
+    };
+
+
+    openSite();
+
+}
+
+
+/* ==================================================
+   SHOW ADMIN LOGIN
+================================================== */
+
+function showAdminLogin(){
+
+    document
+        .getElementById("loginPage")
+        .style.display = "none";
+
+    document
+        .getElementById("adminLoginPage")
+        .style.display = "flex";
+
+}
+
+
+/* ==================================================
+   BACK TO LOGIN
+================================================== */
+
+function backToLogin(){
+
+    document
+        .getElementById("adminLoginPage")
+        .style.display = "none";
+
+    document
+        .getElementById("loginPage")
+        .style.display = "flex";
+
+}
+
+
+/* ==================================================
+   ADMIN LOGIN
+================================================== */
+
+function adminLogin(){
+
+    const username =
+        document
+        .getElementById("adminUsername")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("adminPassword")
+        .value
+        .trim();
+
+    const error =
+        document.getElementById("adminError");
+
+
+    if(
+        username === adminAccount.username &&
+        password === adminAccount.password
+    ){
+
+        currentUser = {
+
+            username: "صاحب الموقع",
+
+            role: "admin"
+
+        };
+
+
+        openSite();
+
+    }else{
+
+        error.textContent =
+            "اسم المستخدم أو كلمة المرور غير صحيحة.";
+
+    }
+
+}
+
+
+/* ==================================================
+   OPEN SITE
+================================================== */
+
+function openSite(){
+
+    document
+        .getElementById("loginPage")
+        .style.display = "none";
+
+    document
+        .getElementById("adminLoginPage")
+        .style.display = "none";
+
+    document
+        .getElementById("site")
+        .style.display = "block";
+
+
+    const welcome =
+        document.getElementById("userWelcome");
+
+
+    if(currentUser.role === "admin"){
+
+        document
+            .getElementById("adminPanel")
+            .style.display = "block";
+
+
+        welcome.innerHTML =
+            '<span class="admin-badge">👑 مرحباً صاحب الموقع</span>';
+
+    }else{
+
+        document
+            .getElementById("adminPanel")
+            .style.display = "none";
+
+
+        welcome.innerHTML =
+            '<span class="visitor-badge">👤 مرحباً ' +
+            escapeHTML(currentUser.username) +
+            '</span>';
+
+    }
+
+
+    showAll();
+
+}
+
+
+/* ==================================================
+   DISPLAY DESIGNS
+================================================== */
+
+function displayDesigns(list){
+
+    const container =
+        document.getElementById("designs");
+
+    container.innerHTML = "";
+
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+            <div class="empty">
+                <h2>لا توجد تصاميم</h2>
+                <p>لم يتم العثور على تصميم.</p>
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    list.forEach((design) => {
+
+        const originalIndex =
+            designs.findIndex(
+                item => item.id === design.id
+            );
+
+
+        const card =
+            document.createElement("div");
+
+        card.className = "card";
+
+
+        let deleteButton = "";
+
+
+        if(
+            currentUser &&
+            currentUser.role === "admin"
+        ){
+
+            deleteButton = `
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteDesign(${originalIndex})">
+
+                    🗑️ حذف التصميم
+
+                </button>
+
+            `;
+
+        }
+
+
+        card.innerHTML = `
+
+            <img
+                src="${escapeHTML(design.image)}"
+                alt="${escapeHTML(design.name)}"
+                onerror="this.src='https://via.placeholder.com/900x600?text=DesignHub'"
+            >
+
+            <div class="card-content">
+
+                <h3>
+                    ${escapeHTML(design.name)}
+                </h3>
+
+                <div class="category">
+                    ${escapeHTML(design.category)}
+                </div>
+
+                <div class="likes">
+
+                    ❤️
+                    ${design.likes}
+                    إعجاب
+
+                </div>
+
+                <div class="card-buttons">
+
+                    <button
+                        class="view-btn"
+                        onclick="viewDesign(${originalIndex})">
+
+                        👁️ مشاهدة
+
+                    </button>
+
+
+                    <button
+                        class="like-btn"
+                        onclick="likeDesign(${originalIndex})">
+
+                        ❤️ إعجاب
+
+                    </button>
+
+
+                    <button
+                        class="share-btn"
+                        onclick="shareDesign(${originalIndex})">
+
+                        📤 مشاركة
+
+                    </button>
+
+
+                    ${deleteButton}
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* ==================================================
+   SHOW ALL
+================================================== */
+
+function showAll(){
+
+    displayDesigns(designs);
+
+}
+
+
+/* ==================================================
+   FILTER
+================================================== */
+
+function filterDesigns(category){
+
+    const result =
+        designs.filter(
+            design =>
+                design.category === category
+        );
+
+
+    displayDesigns(result);
+
+}
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+function searchDesigns(){
+
+    const text =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const result =
+        designs.filter(design =>
+
+            design.name
+                .toLowerCase()
+                .includes(text)
+
+            ||
+
+            design.category
+                .toLowerCase()
+                .includes(text)
+
+        );
+
+
+    displayDesigns(result);
+
+}
+
+
+/* ==================================================
+   LIKE
+================================================== */
+
+function likeDesign(index){
+
+    if(!designs[index]) return;
+
+
+    designs[index].likes++;
+
+
+    saveDesigns();
+
+
+    displayDesigns(designs);
+
+}
+
+
+/* ==================================================
+   SHARE DESIGN
+================================================== */
+
+function shareDesign(index){
+
+    if(!designs[index]) return;
+
+
+    const design =
+        designs[index];
+
+
+    const shareData = {
+
+        title: design.name,
+
+        text:
+            "شاهد هذا التصميم على DesignHub: " +
+            design.name,
+
+        url: window.location.href
+
+    };
+
+
+    if(navigator.share){
+
+        navigator
+            .share(shareData)
+            .catch(()=>{});
+
+    }else{
+
+        copySiteLink();
+
+    }
+
+}
+
+
+/* ==================================================
+   SHARE SITE
+================================================== */
+
+function shareSite(){
+
+    const shareData = {
+
+        title:"DesignHub",
+
+        text:
+            "شاهد موقع DesignHub للتصاميم",
+
+        url:window.location.href
+
+    };
+
+
+    if(navigator.share){
+
+        navigator
+            .share(shareData)
+            .catch(()=>{});
+
+    }else{
+
+        copySiteLink();
+
+    }
+
+}
+
+
+/* ==================================================
+   COPY LINK
+================================================== */
+
+function copySiteLink(){
+
+    if(navigator.clipboard){
+
+        navigator.clipboard
+            .writeText(window.location.href)
+            .then(()=>{
+
+                alert(
+                    "تم نسخ رابط الموقع ✅"
+                );
+
+            })
+            .catch(()=>{
+
+                alert(
+                    "انسخ رابط الموقع من شريط المتصفح."
+                );
+
+            });
+
+    }else{
+
+        alert(
+            "انسخ رابط الموقع من شريط المتصفح."
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   VIEW DESIGN
+================================================== */
+
+function viewDesign(index){
+
+    if(!designs[index]) return;
+
+
+    window.open(
+        designs[index].image,
+        "_blank"
+    );
+
+}
+
+
+/* ==================================================
+   ADD DESIGN
+================================================== */
+
+function addDesign(){
+
+    if(
+        !currentUser ||
+        currentUser.role !== "admin"
+    ){
+
+        alert(
+            "غير مسموح لك بإضافة التصميم."
+        );
+
+        return;
+
+    }
+
+
+    const name =
+        document
+        .getElementById("designName")
+        .value
+        .trim();
+
+
+    const category =
+        document
+        .getElementById("designCategory")
+        .value;
+
+
+    const image =
+        document
+        .getElementById("designImage")
+        .value
+        .trim();
+
+
+    if(!name || !image){
+
+        alert(
+            "اكتب اسم التصميم ورابط الصورة."
+        );
+
+        return;
+
+    }
+
+
+    designs.unshift({
+
+        id: Date.now(),
+
+        name: name,
+
+        category: category,
+
+        image: image,
+
+        likes: 0
+
+    });
+
+
+    saveDesigns();
+
+
+    document
+        .getElementById("designName")
+        .value = "";
+
+
+    document
+        .getElementById("designImage")
+        .value = "";
+
+
+    showAll();
+
+
+    alert(
+        "تم إضافة التصميم بنجاح ✅"
+    );
+
+}
+
+
+/* ==================================================
+   DELETE DESIGN
+================================================== */
+
+function deleteDesign(index){
+
+    if(
+        !currentUser ||
+        currentUser.role !== "admin"
+    ){
+
+        alert(
+            "غير مسموح لك بالحذف."
+        );
+
+        return;
+
+    }
+
+
+    if(!designs[index]) return;
+
+
+    const answer =
+        confirm(
+            "هل تريد حذف هذا التصميم؟"
+        );
+
+
+    if(answer){
+
+        designs.splice(index,1);
+
+
+        saveDesigns();
+
+
+        showAll();
+
+
+        alert(
+            "تم حذف التصميم ✅"
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   LOGOUT
+================================================== */
+
+function logout(){
+
+    currentUser = null;
+
+
+    document
+        .getElementById("site")
+        .style.display = "none";
+
+
+    document
+        .getElementById("adminPanel")
+        .style.display = "none";
+
+
+    document
+        .getElementById("loginPage")
+        .style.display = "flex";
+
+
+    document
+        .getElementById("username")
+        .value = "";
+
+
+    document
+        .getElementById("password")
+        .value = "";
+
+
+    document
+        .getElementById("loginError")
+        .textContent = "";
+
+}
+
+
+/* ==================================================
+   SECURITY HELPER
+================================================== */
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+</script>
+
+</body>
+</html>

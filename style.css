@@ -1,0 +1,1529 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DesignHub | منصة التصاميم</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#222;
+}
+
+header{
+    background:linear-gradient(135deg,#6c5ce7,#0984e3);
+    color:white;
+    padding:15px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px #0002;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+nav button{
+    border:0;
+    color:white;
+    background:#ffffff22;
+    padding:10px 13px;
+    border-radius:9px;
+    cursor:pointer;
+}
+
+nav button:hover{
+    background:white;
+    color:#6c5ce7;
+}
+
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:25px auto;
+}
+
+.hero{
+    background:linear-gradient(135deg,#6c5ce7,#00b894);
+    color:white;
+    text-align:center;
+    padding:55px 20px;
+    border-radius:25px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+section{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px #0000000d;
+}
+
+section h2{
+    margin-bottom:20px;
+}
+
+.btn{
+    border:0;
+    padding:12px 17px;
+    border-radius:10px;
+    cursor:pointer;
+    color:white;
+    background:#6c5ce7;
+    margin:4px;
+    font-size:15px;
+}
+
+.btn:hover{
+    opacity:.9;
+}
+
+.green{
+    background:#00b894;
+}
+
+.red{
+    background:#d63031;
+}
+
+.dark{
+    background:#2d3436;
+}
+
+.white{
+    background:white;
+    color:#6c5ce7;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:15px;
+}
+
+.category{
+    background:#f1f2f6;
+    padding:25px 10px;
+    text-align:center;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.category:hover{
+    transform:translateY(-3px);
+    background:#e8e6ff;
+}
+
+.search{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin-bottom:12px;
+    outline:none;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#6c5ce7;
+}
+
+.designs{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #eee;
+    border-radius:17px;
+    overflow:hidden;
+    box-shadow:0 5px 15px #0001;
+}
+
+.card img,
+.card video{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    background:#eee;
+}
+
+.file-preview{
+    height:190px;
+    background:#f1f2f6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:55px;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card-content h3{
+    margin-bottom:8px;
+}
+
+.card-content p{
+    color:#666;
+    font-size:14px;
+    margin-bottom:7px;
+}
+
+.file-box{
+    border:2px dashed #6c5ce7;
+    padding:30px;
+    text-align:center;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.auth{
+    max-width:450px;
+    margin:auto;
+}
+
+.user-box{
+    background:#f1f2f6;
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+footer{
+    background:#2d3436;
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+.toast{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:#2d3436;
+    color:white;
+    padding:15px 20px;
+    border-radius:10px;
+    display:none;
+    z-index:5000;
+}
+
+.qr-box{
+    text-align:center;
+    padding:20px;
+}
+
+.qr-box img{
+    width:220px;
+    height:220px;
+    max-width:100%;
+}
+
+@media(max-width:700px){
+
+    header{
+        justify-content:center;
+    }
+
+    .logo{
+        width:100%;
+        text-align:center;
+    }
+
+    nav{
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .search{
+        flex-direction:column;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+🎨 DesignHub
+</div>
+
+<nav>
+
+<button onclick="showPage('home')">
+الرئيسية
+</button>
+
+<button onclick="showPage('designs')">
+التصاميم
+</button>
+
+<button onclick="showPage('upload')">
+➕ إضافة
+</button>
+
+<button onclick="showPage('account')">
+👤 حسابي
+</button>
+
+<button onclick="shareWebsite()">
+📤 مشاركة
+</button>
+
+</nav>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- الرئيسية -->
+
+<div id="home">
+
+<div class="hero">
+
+<h1>
+🎨 DesignHub
+</h1>
+
+<p>
+منصة لعرض ومشاركة التصاميم والملفات الإبداعية
+</p>
+
+<button class="btn white"
+onclick="showPage('designs')">
+🖼️ مشاهدة التصاميم
+</button>
+
+<button class="btn dark"
+onclick="showPage('upload')">
+➕ إضافة تصميم
+</button>
+
+<button class="btn green"
+onclick="shareWebsite()">
+📤 مشاركة الموقع
+</button>
+
+</div>
+
+
+<section>
+
+<h2>
+📂 أقسام التصاميم
+</h2>
+
+<div class="categories">
+
+<div class="category"
+onclick="filterCategory('الكل')">
+🎨
+<br>
+كل التصاميم
+</div>
+
+<div class="category"
+onclick="filterCategory('لوجوهات')">
+🏷️
+<br>
+لوجوهات
+</div>
+
+<div class="category"
+onclick="filterCategory('سوشيال ميديا')">
+📱
+<br>
+سوشيال ميديا
+</div>
+
+<div class="category"
+onclick="filterCategory('بوسترات')">
+📢
+<br>
+بوسترات
+</div>
+
+<div class="category"
+onclick="filterCategory('كروت شخصية')">
+🪪
+<br>
+كروت شخصية
+</div>
+
+<div class="category"
+onclick="filterCategory('صور')">
+🖼️
+<br>
+صور
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>
+⭐ مميزات DesignHub
+</h2>
+
+<div class="categories">
+
+<div class="category">
+🔍
+<br>
+بحث
+</div>
+
+<div class="category">
+📁
+<br>
+حفظ ملفات
+</div>
+
+<div class="category">
+📥
+<br>
+تحميل
+</div>
+
+<div class="category">
+📤
+<br>
+مشاركة
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- التصاميم -->
+
+<div id="designs" class="hidden">
+
+<section>
+
+<h2>
+🖼️ التصاميم
+</h2>
+
+<div class="search">
+
+<input
+id="searchInput"
+type="text"
+placeholder="🔍 ابحث عن تصميم..."
+oninput="renderDesigns()"
+>
+
+<select
+id="categoryFilter"
+onchange="renderDesigns()">
+
+<option value="الكل">
+كل الأقسام
+</option>
+
+<option value="لوجوهات">
+لوجوهات
+</option>
+
+<option value="سوشيال ميديا">
+سوشيال ميديا
+</option>
+
+<option value="بوسترات">
+بوسترات
+</option>
+
+<option value="كروت شخصية">
+كروت شخصية
+</option>
+
+<option value="صور">
+صور
+</option>
+
+</select>
+
+</div>
+
+<div
+id="designList"
+class="designs">
+</div>
+
+</section>
+
+</div>
+
+
+<!-- إضافة تصميم -->
+
+<div id="upload" class="hidden">
+
+<section>
+
+<h2>
+➕ إضافة تصميم جديد
+</h2>
+
+<div class="file-box">
+
+<p>
+اختر صورة أو فيديو أو ملف تصميم
+</p>
+
+<br>
+
+<input
+id="designFile"
+type="file"
+accept="image/*,video/*,.pdf,.zip,.rar,.psd,.ai"
+>
+
+</div>
+
+<input
+id="designTitle"
+placeholder="اسم التصميم"
+>
+
+<select id="designCategory">
+
+<option>
+لوجوهات
+</option>
+
+<option>
+سوشيال ميديا
+</option>
+
+<option>
+بوسترات
+</option>
+
+<option>
+كروت شخصية
+</option>
+
+<option>
+صور
+</option>
+
+</select>
+
+<textarea
+id="designDescription"
+placeholder="وصف التصميم">
+</textarea>
+
+<button
+class="btn"
+onclick="addDesign()">
+💾 حفظ التصميم
+</button>
+
+</section>
+
+</div>
+
+
+<!-- الحساب -->
+
+<div id="account" class="hidden">
+
+<section class="auth">
+
+<div id="loggedOut">
+
+<h2>
+👤 تسجيل الدخول
+</h2>
+
+<input
+id="username"
+placeholder="اسم المستخدم"
+>
+
+<input
+id="password"
+type="password"
+placeholder="كلمة المرور"
+>
+
+<button
+class="btn"
+onclick="login()">
+🔐 دخول
+</button>
+
+<button
+class="btn green"
+onclick="register()">
+➕ إنشاء حساب
+</button>
+
+</div>
+
+
+<div id="loggedIn" class="hidden">
+
+<h2>
+👤 حسابي
+</h2>
+
+<div class="user-box">
+
+مرحباً:
+<strong id="currentUser">
+</strong>
+
+</div>
+
+<button
+class="btn red"
+onclick="logout()">
+تسجيل الخروج
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- المشاركة -->
+
+<section>
+
+<h2>
+📤 مشاركة DesignHub
+</h2>
+
+<p>
+شارك موقع DesignHub مع أصدقائك.
+</p>
+
+<br>
+
+<button
+class="btn"
+onclick="shareWebsite()">
+📤 مشاركة الموقع
+</button>
+
+<button
+class="btn green"
+onclick="copyWebsiteLink()">
+🔗 نسخ الرابط
+</button>
+
+<div class="qr-box">
+
+<h3>
+📱 QR Code
+</h3>
+
+<br>
+
+<img
+id="qrCode"
+alt="QR Code"
+>
+
+</div>
+
+</section>
+
+
+<!-- التواصل -->
+
+<section>
+
+<h2>
+📞 تواصل معنا
+</h2>
+
+<p>
+للتواصل:
+</p>
+
+<br>
+
+<a
+href="tel:01225320285"
+class="btn"
+style="display:inline-block;text-decoration:none">
+📞 01225320285
+</a>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<h2>
+🎨 DesignHub
+</h2>
+
+<p>
+منصة التصاميم الخاصة بك
+</p>
+
+<br>
+
+<button
+class="btn white"
+onclick="shareWebsite()">
+📤 مشاركة DesignHub
+</button>
+
+<p style="margin-top:20px">
+© 2026 DesignHub
+</p>
+
+</footer>
+
+
+<div
+id="toast"
+class="toast">
+</div>
+
+
+<script>
+
+/* رابط الموقع */
+
+const WEBSITE_URL =
+"https://calm-sawine-ea6016.netlify.app/";
+
+
+/* البيانات */
+
+let designs =
+JSON.parse(
+localStorage.getItem("designhub_designs") || "[]"
+);
+
+let users =
+JSON.parse(
+localStorage.getItem("designhub_users") || "[]"
+);
+
+let currentUser =
+localStorage.getItem("designhub_current_user") || "";
+
+
+/* الصفحات */
+
+function showPage(page){
+
+document
+.querySelectorAll("main > div")
+.forEach(
+element =>
+element.classList.add("hidden")
+);
+
+const selected =
+document.getElementById(page);
+
+if(selected){
+
+selected.classList.remove("hidden");
+
+}
+
+if(page === "designs"){
+
+renderDesigns();
+
+}
+
+updateAccount();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* الرسائل */
+
+function toast(message){
+
+const box =
+document.getElementById("toast");
+
+box.innerText =
+message;
+
+box.style.display =
+"block";
+
+setTimeout(
+() =>
+box.style.display="none",
+2500
+);
+
+}
+
+
+/* إنشاء حساب */
+
+function register(){
+
+const username =
+document
+.getElementById("username")
+.value
+.trim();
+
+const password =
+document
+.getElementById("password")
+.value;
+
+if(!username || !password){
+
+toast(
+"اكتب اسم المستخدم وكلمة المرور"
+);
+
+return;
+
+}
+
+if(users.some(
+u =>
+u.username === username
+)){
+
+toast(
+"اسم المستخدم موجود بالفعل"
+);
+
+return;
+
+}
+
+users.push({
+username,
+password
+});
+
+localStorage.setItem(
+"designhub_users",
+JSON.stringify(users)
+);
+
+currentUser =
+username;
+
+localStorage.setItem(
+"designhub_current_user",
+currentUser
+);
+
+toast(
+"تم إنشاء الحساب بنجاح"
+);
+
+updateAccount();
+
+}
+
+
+/* تسجيل الدخول */
+
+function login(){
+
+const username =
+document
+.getElementById("username")
+.value
+.trim();
+
+const password =
+document
+.getElementById("password")
+.value;
+
+const user =
+users.find(
+u =>
+u.username === username &&
+u.password === password
+);
+
+if(!user){
+
+toast(
+"اسم المستخدم أو كلمة المرور غير صحيحة"
+);
+
+return;
+
+}
+
+currentUser =
+username;
+
+localStorage.setItem(
+"designhub_current_user",
+currentUser
+);
+
+toast(
+"تم تسجيل الدخول"
+);
+
+updateAccount();
+
+}
+
+
+/* خروج */
+
+function logout(){
+
+currentUser="";
+
+localStorage.removeItem(
+"designhub_current_user"
+);
+
+updateAccount();
+
+toast(
+"تم تسجيل الخروج"
+);
+
+}
+
+
+/* الحساب */
+
+function updateAccount(){
+
+const loggedOut =
+document.getElementById("loggedOut");
+
+const loggedIn =
+document.getElementById("loggedIn");
+
+if(!loggedOut || !loggedIn)
+return;
+
+if(currentUser){
+
+loggedOut.classList.add("hidden");
+
+loggedIn.classList.remove("hidden");
+
+document.getElementById(
+"currentUser"
+).innerText =
+currentUser;
+
+}else{
+
+loggedOut.classList.remove("hidden");
+
+loggedIn.classList.add("hidden");
+
+}
+
+}
+
+
+/* إضافة التصميم */
+
+function addDesign(){
+
+if(!currentUser){
+
+toast(
+"سجل الدخول أولاً"
+);
+
+showPage("account");
+
+return;
+
+}
+
+const file =
+document
+.getElementById("designFile")
+.files[0];
+
+const title =
+document
+.getElementById("designTitle")
+.value
+.trim();
+
+const category =
+document
+.getElementById("designCategory")
+.value;
+
+const description =
+document
+.getElementById("designDescription")
+.value
+.trim();
+
+if(!file || !title){
+
+toast(
+"اختر ملف واكتب اسم التصميم"
+);
+
+return;
+
+}
+
+const reader =
+new FileReader();
+
+reader.onload =
+function(event){
+
+const design={
+
+id:Date.now(),
+
+title,
+
+category,
+
+description:
+description || "بدون وصف",
+
+fileName:file.name,
+
+fileType:file.type,
+
+data:event.target.result,
+
+owner:currentUser
+
+};
+
+designs.unshift(design);
+
+try{
+
+localStorage.setItem(
+"designhub_designs",
+JSON.stringify(designs)
+);
+
+}catch(error){
+
+toast(
+"الملف كبير جداً على تخزين المتصفح"
+);
+
+return;
+
+}
+
+document
+.getElementById("designFile")
+.value="";
+
+document
+.getElementById("designTitle")
+.value="";
+
+document
+.getElementById("designDescription")
+.value="";
+
+toast(
+"تم حفظ التصميم"
+);
+
+showPage("designs");
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+
+/* عرض التصاميم */
+
+function renderDesigns(){
+
+const list =
+document.getElementById("designList");
+
+if(!list)
+return;
+
+const search =
+(
+document.getElementById("searchInput")
+.value || ""
+)
+.toLowerCase();
+
+const category =
+document.getElementById(
+"categoryFilter"
+).value;
+
+list.innerHTML="";
+
+const filtered =
+designs.filter(
+design => {
+
+const matchSearch =
+design.title
+.toLowerCase()
+.includes(search)
+||
+design.description
+.toLowerCase()
+.includes(search);
+
+const matchCategory =
+category === "الكل"
+||
+design.category === category;
+
+return matchSearch &&
+matchCategory;
+
+}
+);
+
+if(filtered.length === 0){
+
+list.innerHTML=`
+
+<div style="
+grid-column:1/-1;
+text-align:center;
+padding:40px">
+
+<h3>
+لا توجد تصاميم
+</h3>
+
+<p>
+أضف أول تصميم من قسم إضافة.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+filtered.forEach(
+design => {
+
+let preview="";
+
+if(
+design.fileType.startsWith("image/")
+){
+
+preview=`
+
+<img
+src="${design.data}"
+alt="${escapeHTML(design.title)}"
+>
+
+`;
+
+}else if(
+design.fileType.startsWith("video/")
+){
+
+preview=`
+
+<video
+src="${design.data}"
+controls>
+</video>
+
+`;
+
+}else{
+
+preview=`
+
+<div class="file-preview">
+📄
+</div>
+
+`;
+
+}
+
+
+const deleteButton =
+design.owner === currentUser
+?
+`
+
+<button
+class="btn red"
+onclick="deleteDesign(${design.id})">
+🗑️ حذف
+</button>
+
+`
+:
+"";
+
+
+const card =
+document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+
+${preview}
+
+<div class="card-content">
+
+<h3>
+${escapeHTML(design.title)}
+</h3>
+
+<p>
+📂 ${escapeHTML(design.category)}
+</p>
+
+<p>
+${escapeHTML(design.description)}
+</p>
+
+<small>
+بواسطة:
+${escapeHTML(design.owner)}
+</small>
+
+<br>
+
+<button
+class="btn green"
+onclick="downloadDesign(${design.id})">
+📥 تحميل
+</button>
+
+<button
+class="btn"
+onclick="shareWebsite()">
+📤 مشاركة
+</button>
+
+${deleteButton}
+
+</div>
+
+`;
+
+list.appendChild(card);
+
+});
+
+}
+
+
+/* حذف */
+
+function deleteDesign(id){
+
+const design =
+designs.find(
+d =>
+d.id === id
+);
+
+if(!design)
+return;
+
+if(
+design.owner !== currentUser
+){
+
+toast(
+"لا يمكنك حذف هذا التصميم"
+);
+
+return;
+
+}
+
+if(
+!confirm(
+"هل تريد حذف التصميم؟"
+)
+)
+return;
+
+designs =
+designs.filter(
+d =>
+d.id !== id
+);
+
+localStorage.setItem(
+"designhub_designs",
+JSON.stringify(designs)
+);
+
+renderDesigns();
+
+toast(
+"تم حذف التصميم"
+);
+
+}
+
+
+/* تحميل */
+
+function downloadDesign(id){
+
+const design =
+designs.find(
+d =>
+d.id === id
+);
+
+if(!design)
+return;
+
+const link =
+document.createElement("a");
+
+link.href =
+design.data;
+
+link.download =
+design.fileName;
+
+document.body.appendChild(link);
+
+link.click();
+
+link.remove();
+
+}
+
+
+/* مشاركة حقيقية */
+
+async function shareWebsite(){
+
+const data={
+
+title:"DesignHub",
+
+text:
+"🎨 شاهد موقع DesignHub للتصاميم",
+
+url:WEBSITE_URL
+
+};
+
+
+if(
+navigator.share
+){
+
+try{
+
+await navigator.share(data);
+
+}catch(error){
+
+}
+
+}else{
+
+copyWebsiteLink();
+
+}
+
+}
+
+
+/* نسخ الرابط */
+
+async function copyWebsiteLink(){
+
+try{
+
+await navigator.clipboard.writeText(
+WEBSITE_URL
+);
+
+toast(
+"✅ تم نسخ رابط الموقع"
+);
+
+}catch(error){
+
+prompt(
+"انسخ رابط DesignHub:",
+WEBSITE_URL
+);
+
+}
+
+}
+
+
+/* الأقسام */
+
+function filterCategory(category){
+
+showPage("designs");
+
+document.getElementById(
+"categoryFilter"
+).value =
+category;
+
+renderDesigns();
+
+}
+
+
+/* حماية النص */
+
+function escapeHTML(text){
+
+return String(text)
+
+.replace(/&/g,"&amp;")
+
+.replace(/</g,"&lt;")
+
+.replace(/>/g,"&gt;")
+
+.replace(/"/g,"&quot;")
+
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* QR Code */
+
+document.getElementById(
+"qrCode"
+).src =
+"https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
++
+encodeURIComponent(
+WEBSITE_URL
+);
+
+
+/* تشغيل */
+
+showPage("home");
+
+updateAccount();
+
+</script>
+
+</body>
+</html>
+```
